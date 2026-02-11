@@ -1,17 +1,54 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
 
+const allNews = await getCollection("news");
+const sorted = allNews
+  .slice()
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+const latest = sorted.slice(0, 15);
+
+const title = "Bupivacaine News | Latest updates and headlines";
+const description =
+  "A fast, simple news hub tracking the latest public headlines and updates about bupivacaine. Browse recent items by date and source.";
 ---
+<BaseLayout title={title} description={description}>
+  <h1>Bupivacaine News</h1>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+  <p>
+    A focused news site tracking <strong>bupivacaine</strong> in clinical research, safety updates, regulatory mentions,
+    product announcements, and related medical reporting.
+  </p>
+
+  <div class="card">
+    <h2 style="margin-top:0;">Looking for the latest items?</h2>
+    <p style="margin-bottom:0;">
+      Browse the full archive on the <a href="/news/">News index</a> (sorted newest-first).
+    </p>
+  </div>
+
+  <h2>Latest additions</h2>
+
+  {latest.length === 0 ? (
+    <p class="muted">No items yet. Check back soon.</p>
+  ) : (
+    <ul>
+      {latest.map((item) => (
+        <li>
+          <a href={`/news/${item.slug}/`}>{item.data.title}</a>
+          <span class="muted"> — {new Date(item.data.date).toISOString().slice(0, 10)}</span>
+        </li>
+      ))}
+    </ul>
+  )}
+
+  <div class="card">
+    <h2 style="margin-top:0;">Domain for sale</h2>
+    <p style="margin-bottom:0;">
+      Interested in acquiring this site/domain? Email <a href="mailto:sean.p.browne@gmail.com">sean.p.browne@gmail.com</a>
+      or message via WhatsApp: <a href="https://wa.me/447713571037" rel="noopener">wa.me/447713571037</a>.
+    </p>
+  </div>
+</BaseLayout>
+

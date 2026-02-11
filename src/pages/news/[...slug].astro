@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const all = await getCollection("news");
+  return all.map((entry) => ({ params: { slug: entry.slug } }));
+}
+
+const { slug } = Astro.params;
+const all = await getCollection("news");
+const entry = all.find((e) => e.slug === slug);
+
+if (!entry) {
+  throw new Error(`News item not found: ${slug}`);
+}
+
+const pubDate = new Date(entry.data.date);
+const title = `${entry.data.title} | Bupivacaine News`;
+const description =
+  entry.data.summary?.trim() ||
+  "Bupivacaine-related news item with source link and publication date.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  headline: entry.data.title,
+  datePublished: pubDate.toISOString(),
+  dateModified: pubDate.toISOString(),
+  mainEntityOfPage: new URL(Astro.url.pathname, "https://bupivacaine-news.pages.dev").toString(),
+  publisher: { "@type": "Organization", name: "Bupivacaine News" },
+  ...(entry.data.source_url ? { url: entry.data.source_url } : {}),
+};
+---
+<BaseLayout title={title} description={description}>
+  <article>
+    <h1>{entry.data.title}</h1>
+
+    <p class="muted">
+      Added: {pubDate.toISOString().slice(0, 10)}
+      {entry.data.source_url ? (
+        <>
+          {" · "}
+          <a href={entry.data.source_url} rel="noopener nofollow">Source</a>
+          {entry.data.source_name ? ` (${entry.data.source_name})` : ""}
+        </>
+      ) : null}
+    </p>
+
+    {entry.data.summary ? <p><strong>Summary:</strong> {entry.data.summary}</p> : null}
+
+    <hr />
+
+    <div>
+      <slot />
+    </div>
+
+    <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+  </article>
+</BaseLayout>
+

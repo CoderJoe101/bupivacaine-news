@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bupivacaine-news.pages.dev/sitemap-index.xml
+

@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const allNews = await getCollection("news");
+const items = allNews
+  .slice()
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+const title = "Bupivacaine News Archive | All items by date";
+const description =
+  "All bupivacaine-related news pages on this site, ordered by newest first. Each item includes title, date, and source link where available.";
+---
+<BaseLayout title={title} description={description}>
+  <h1>News</h1>
+  <p class="muted">Newest first.</p>
+
+  {items.length === 0 ? (
+    <p class="muted">No items yet.</p>
+  ) : (
+    <ol>
+      {items.map((item) => (
+        <li style="margin: 10px 0;">
+          <a href={`/news/${item.slug}/`}>{item.data.title}</a>
+          <div class="muted" style="font-size:0.95rem;">
+            {new Date(item.data.date).toISOString().slice(0, 10)}
+            {item.data.source_url ? (
+              <>
+                {" · "}
+                <a href={item.data.source_url} rel="noopener nofollow">Source</a>
+                {item.data.source_name ? ` (${item.data.source_name})` : ""}
+              </>
+            ) : null}
+          </div>
+        </li>
+      ))}
+    </ol>
+  )}
+</BaseLayout>
+

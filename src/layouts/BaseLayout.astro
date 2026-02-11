@@ -1,0 +1,83 @@
+---
+const {
+  title = "Bupivacaine News",
+  description = "Latest news and updates about bupivacaine, curated from public sources.",
+  canonical,
+  noindex = false,
+} = Astro.props;
+
+const site = "https://bupivacaine-news.pages.dev";
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, site).toString();
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Bupivacaine News",
+  url: site,
+  description,
+};
+---
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{title}</title>
+    <link rel="canonical" href={canonicalUrl} />
+    <meta name="description" content={description} />
+
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+
+    <meta name="twitter:card" content="summary" />
+
+    <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+
+    <style>
+      :root { color-scheme: light; }
+      body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.5; }
+      header, main, footer { max-width: 980px; margin: 0 auto; padding: 16px; }
+      header { display: flex; gap: 16px; align-items: baseline; justify-content: space-between; border-bottom: 1px solid #e5e7eb; }
+      nav a { margin-right: 12px; text-decoration: none; }
+      nav a:hover { text-decoration: underline; }
+      .muted { color: #6b7280; }
+      .card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px; margin: 12px 0; }
+      footer { border-top: 1px solid #e5e7eb; }
+      small a { color: inherit; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <div style="font-weight:700;">Bupivacaine News</div>
+        <div class="muted" style="font-size:0.95rem;">Latest bupivacaine-related news and updates.</div>
+      </div>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/news/">News</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      <small class="muted">
+        Informational only — not medical advice.
+        <br />
+        This domain may be available for purchase. Email
+        <a href="mailto:sean.p.browne@gmail.com">sean.p.browne@gmail.com</a>
+        or WhatsApp
+        <a href="https://wa.me/447713571037" rel="noopener">+44 7713 571037</a>.
+      </small>
+    </footer>
+  </body>
+</html>
+
