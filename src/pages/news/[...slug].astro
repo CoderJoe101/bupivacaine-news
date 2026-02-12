@@ -27,7 +27,7 @@ const jsonLd = {
   headline: entry.data.title,
   datePublished: pubDate.toISOString(),
   dateModified: pubDate.toISOString(),
-  mainEntityOfPage: new URL(Astro.url.pathname, "https://bupivacaine-news.pages.dev").toString(),
+  mainEntityOfPage: new URL(Astro.url.pathname, "https://bupivacaine.com").toString(),
   publisher: { "@type": "Organization", name: "Bupivacaine News" },
   ...(entry.data.source_url ? { url: entry.data.source_url } : {}),
 };
