@@ -1,0 +1,16 @@
+---
+title: "Efficacy and Safety of Dexmedetomidine as an Adjuvant to Bupivacaine in Ultrasound-Guided Pericapsular Nerve Group (PENG) Block for Proximal Femoral Fractures: A Randomised, Single-Centre Controlled Trial - Cureus"
+date: "2026-02-03T06:56:01.000Z"
+source_name: "Google News"
+source_url: "https://news.google.com/rss/articles/CBMi2wJBVV95cUxPaGR2aXVNd3Z6Y3U5UFRaOVJzZ2hzWkR0aHV1MXVibTFDbW5JQTlyTjB0STZNT3hVNmIxSGtnX0ZSb3FKcVJaLVA5WWF5QVUtRDBCLVFRWm84SlRTTjNlRWtjS0plMk4wRkxINTBJZjRHZ3lvVkV3WnRIaDAzUlBBbkFPNXRjQ1pEbmRJd0xjdFBHdmlkR01jcVFEQXpBOGh4MmFLWXhyT2dmN1F2QXJ3cktWOEZzVUhFZzZhY3JBenZfRDBfYWNXeVAyN0Q3aGJvZ1BFb1ktRmZ5QmxMSnpDQWdiTlhwVGotWk0td3FMcUxsMEFQdWRINU1ndDdmWGMtNm5tSmhBY1d0d2FiOGhqdkc2cF8zSF8wM3dwSHlLejNCcjkzeHRnLTZKQjNhSVhIQm9sejFHYUJ2U1BFN1oxU1QtYUlaMTVycllQM19sZzdLNk9jZExxem8tRQ?oc=5"
+tags: ["bupivacaine"]
+summary: "Efficacy and Safety of Dexmedetomidine as an Adjuvant to Bupivacaine in Ultrasound-Guided Pericapsular Nerve Group (PENG) Block for Proximal Femoral Fractures: A Randomised, Single-Centre Controlled Trial Cureus"
+---
+
+## Source
+
+- https://news.google.com/rss/articles/CBMi2wJBVV95cUxPaGR2aXVNd3Z6Y3U5UFRaOVJzZ2hzWkR0aHV1MXVibTFDbW5JQTlyTjB0STZNT3hVNmIxSGtnX0ZSb3FKcVJaLVA5WWF5QVUtRDBCLVFRWm84SlRTTjNlRWtjS0plMk4wRkxINTBJZjRHZ3lvVkV3WnRIaDAzUlBBbkFPNXRjQ1pEbmRJd0xjdFBHdmlkR01jcVFEQXpBOGh4MmFLWXhyT2dmN1F2QXJ3cktWOEZzVUhFZzZhY3JBenZfRDBfYWNXeVAyN0Q3aGJvZ1BFb1ktRmZ5QmxMSnpDQWdiTlhwVGotWk0td3FMcUxsMEFQdWRINU1ndDdmWGMtNm5tSmhBY1d0d2FiOGhqdkc2cF8zSF8wM3dwSHlLejNCcjkzeHRnLTZKQjNhSVhIQm9sejFHYUJ2U1BFN1oxU1QtYUlaMTVycllQM19sZzdLNk9jZExxem8tRQ?oc=5
+
+## Extract
+
+Efficacy and Safety of Dexmedetomidine as an Adjuvant to Bupivacaine in Ultrasound-Guided Pericapsular Nerve Group (PENG) Block for Proximal Femoral Fractures: A Randomised, Single-Centre Controlled Trial Cureus

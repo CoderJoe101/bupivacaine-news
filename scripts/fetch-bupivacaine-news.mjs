@@ -3,9 +3,13 @@ import path from "node:path";
 import Parser from "rss-parser";
 import slugify from "slugify";
 
-const RSS_URL =
-  "https://news.google.com/rss/search?q=bupivacaine&hl=en-GB&gl=GB&ceid=GB:en";
+//const RSS_URL =
+//  "https://news.google.com/rss/search?q=bupivacaine&hl=en-GB&gl=GB&ceid=GB:en";
 
+const RSS_URL =
+  'https://news.google.com/rss/search?q=bupivacaine+when:30d&hl=en-GB&gl=GB&ceid=GB:en';
+
+const createdAt = new Date().toISOString();
 const SEEN_PATH = path.resolve("data/seen.json");
 const OUT_DIR = path.resolve("src/content/news");
 
@@ -61,6 +65,25 @@ async function main() {
   const seen = loadSeen();
   const feed = await parser.parseURL(RSS_URL);
 
+
+// troubleshooting start
+console.log("Feed title:", feed.title);
+console.log("Total RSS items:", feed.items?.length ?? 0);
+
+for (const it of (feed.items || []).slice(0, 5)) {
+  console.log("SAMPLE:", {
+    title: it.title,
+    link: it.link,
+    isoDate: it.isoDate,
+    pubDate: it.pubDate,
+    contentSnippet: it.contentSnippet?.slice(0, 80),
+  });
+}
+// troubleshooting end
+
+
+
+
   let added = 0;
 
   for (const item of feed.items || []) {
@@ -72,7 +95,7 @@ async function main() {
 
     // Basic relevance + recency (tweak)
     if (!title.toLowerCase().includes("bupivacaine")) continue;
-    if (!withinDays(pubDate, 7)) continue;
+    if (!withinDays(pubDate, 30)) continue;
 
     // Dedupe by URL
     if (seen.urls.includes(sourceUrl)) continue;
@@ -97,6 +120,7 @@ source_name: ${escapeYamlString(sourceName)}
 source_url: ${escapeYamlString(sourceUrl)}
 tags: ["bupivacaine"]
 summary: ${escapeYamlString(summaryText)}
+created_at: "..."
 ---
 
 ## Source

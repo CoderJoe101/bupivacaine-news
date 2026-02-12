@@ -9,6 +9,7 @@ const news = defineCollection({
     source_url: z.string().url().optional(),
     tags: z.array(z.string()).default([]),
     summary: z.string().optional(),
+    created_at: z.string().or(z.date()),
   }),
 });
 
